@@ -25,7 +25,7 @@ function Home() {
             <h1>Loading...</h1>
           </div>
         ) : (
-          <div>
+          <div className={styles.test}>
             <Header/>
             {movies.map((movie) => (
               <Movie
