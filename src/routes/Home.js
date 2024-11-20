@@ -18,10 +18,13 @@ function Home() {
       getMovies();
     }, []);
     return (
-      <div className={styles.loading}>
+      <>
         {loading ? (
-          <h1>Loading...</h1>
+          <div className={styles.loading}>
+            <h1>Loading...</h1>
+          </div>
         ) : (
+        
           <div>
             {movies.map((movie) => (
               <Movie
@@ -35,7 +38,7 @@ function Home() {
             ))}
           </div>
         )}
-      </div>
+      </>
     );
   }
 
