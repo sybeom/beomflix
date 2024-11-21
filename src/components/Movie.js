@@ -8,7 +8,7 @@ function Movie({ id, coverImg, title, summary, genres }) {
           <h2>
             <Link to={`/movie/${id}`}>{title}</Link>
           </h2>
-          <p>{summary}</p>
+          <p>rsef</p>  
           <ul
             style={
               {
@@ -17,9 +17,9 @@ function Movie({ id, coverImg, title, summary, genres }) {
               }
             }
           >
-            {genres.map((g) => (
+            {/* {genres.map((g) => (
               <li key={g}>{g}</li>
-            ))}
+            ))} */}
           </ul>
         </div>
       );

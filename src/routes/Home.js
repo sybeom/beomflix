@@ -25,18 +25,25 @@ function Home() {
             <h1>Loading...</h1>
           </div>
         ) : (
-          <div className={styles.test}>
+          <div>
             <Header/>
-            {movies.map((movie) => (
-              <Movie
-                key={movie.id}
-                id={movie.id}
-                coverImg={movie.medium_cover_image}
-                title={movie.title}
-                summary={movie.summary}
-                genres={movie.genres}
-              />
-            ))}
+              <div className={styles.contents}>
+                <div className={[`realtime-container`]}>
+                  <div className={styles[`realtime-title`]}>실시간 추천 영화</div>
+                  <div className={styles[`slider-track`]}>
+                    {movies.map((movie) => (
+                      <Movie
+                        key={movie.id}
+                        id={movie.id}
+                        coverImg={movie.medium_cover_image}
+                        // title={movie.title}
+                        // summary={movie.summary}
+                        genres={movie.genres}
+                      />
+                    ))}
+                  </div>
+              </div>
+            </div>
           </div>
         )}
       </>

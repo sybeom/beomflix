@@ -5,6 +5,34 @@
     align-items: center;
 }
 
-.test {
-   
+.contents {
+    height: 100vh;
+    display: flex;
+    align-items: center;
 }
+
+.realtime-container {
+    perspective: 1300px;
+}
+
+.realtime-title {
+    font-size: 32px;
+    font-weight: bolder;
+    margin: 0 0 12px 12px;
+}
+
+.slider-track {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: bannermove 15s linear infinite;
+}
+
+@keyframes bannermove {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-50%, 0);
+    }
+  }
