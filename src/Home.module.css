@@ -5,27 +5,48 @@
     align-items: center;
 }
 
-.contents {
+.home-body {
+    width: 100vw;
     height: 100vh;
+}
+
+.contents {
+    width: inherit;
+    height: inherit;
     display: flex;
     align-items: center;
 }
 
 .realtime-container {
+    width: inherit;
     perspective: 1300px;
 }
 
+.realtime-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .realtime-title {
     font-size: 32px;
     font-weight: bolder;
     margin: 0 0 12px 12px;
 }
-
+.more-movie {
+    font-size: 20px;
+    font-weight: bolder ;
+    text-decoration: none;
+    padding-right: 120px;
+    color: red;
+}
+.more-movie:visited {
+    color: inherit;
+}
 .slider-track {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: bannermove 15s linear infinite;
+    animation: bannermove 25s linear infinite;
 }
 
 @keyframes bannermove {

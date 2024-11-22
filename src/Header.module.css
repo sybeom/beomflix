@@ -5,6 +5,10 @@
     padding-top: 12px;
 }
 
+h1 {
+    color: red;
+}
+
 .sign-container {
     display: flex;
     justify-content: center;

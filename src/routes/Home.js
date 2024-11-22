@@ -25,11 +25,14 @@ function Home() {
             <h1>Loading...</h1>
           </div>
         ) : (
-          <div>
+          <div className={styles[`home-body`]}>
             <Header/>
               <div className={styles.contents}>
-                <div className={[`realtime-container`]}>
-                  <div className={styles[`realtime-title`]}>실시간 추천 영화</div>
+                <div className={styles[`realtime-container`]}>
+                  <div className={styles[`realtime-header`]}>
+                    <div className={styles[`realtime-title`]}>실시간 인기 영화</div>
+                    <a href="" className={styles[`more-movie`]}>더 보기</a>
+                  </div>
                   <div className={styles[`slider-track`]}>
                     {movies.map((movie) => (
                       <Movie
