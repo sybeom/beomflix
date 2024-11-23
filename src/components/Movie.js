@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "../Movie.module.css"
 
 function Movie({ id, coverImg, title, summary, genres }) {
-
+  const movie_title = title.length > 15 ? title.slice(0, 15) + "..." : title;
   return (
       <div className={styles.movie}>
         <Link to={`/movie/${id}`}>
@@ -16,8 +16,10 @@ function Movie({ id, coverImg, title, summary, genres }) {
             } 
           />
         </Link>
-        
-        <p>rsef</p>  
+        <div className={styles[`movie-info`]}>
+          <h3 className={styles[`card-title`]}>{movie_title}</h3>
+          <div>8.5/10</div>
+        </div>
         <ul
           style={
             {

@@ -1,3 +1,20 @@
 .movie {
+    position: relative;
     margin: 12px;
+}
+
+.movie-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 100px 10px 5px;
+    background-image: linear-gradient(180deg, rgba(51, 55, 69, 0), rgba(16, 21, 40, 0.85));
+}
+
+.card-title {
+    text-overflow: ellipsis;
 }
