@@ -1,0 +1,30 @@
+.container {
+    height: 100vh;
+    padding: 48px;
+    background-color: black;
+}
+
+.list-header {
+    display: flex;
+    justify-content: end;
+    height: 48px;
+    border-radius: 8px;
+}
+
+.order {
+    width: inherit;
+    height: inherit;
+    background-color: white;
+    color: black;
+}
+
+.option-priority {
+    color: black;
+}
+
+.movie-list {
+    width: 100vw;
+    height: 100vh;
+    border: 1px solid white;
+
+}

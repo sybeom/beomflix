@@ -20,18 +20,6 @@ function Movie({ id, coverImg, title, summary, genres }) {
           <h3 className={styles[`card-title`]}>{movie_title}</h3>
           <div>8.5/10</div>
         </div>
-        <ul
-          style={
-            {
-              color: "tomato",
-              fontSize: "30px"  
-            }
-          }
-        >
-          {/* {genres.map((g) => (
-            <li key={g}>{g}</li>
-          ))} */}
-        </ul>
       </div>
     );
 }

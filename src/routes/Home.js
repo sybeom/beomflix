@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Movie from "../components/Movie";
 import Header from "../components/Header";
 import styles from "../Home.module.css";
@@ -31,7 +32,7 @@ function Home() {
                 <div className={styles[`realtime-container`]}>
                   <div className={styles[`realtime-header`]}>
                     <div className={styles[`realtime-title`]}>실시간 인기 영화</div>
-                    <a href="" className={styles[`more-movie`]}>더 보기</a>
+                    <Link to={`/movielist/`} className={styles[`more-movie`]}> 더 보기 </Link>
                   </div>
                   <div className={styles[`slider-track`]}>
                     {movies.map((movie) => (
