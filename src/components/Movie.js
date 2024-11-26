@@ -8,12 +8,10 @@ function Movie({ id, coverImg, title, summary, genres }) {
       <div className={styles.movie}>
         <Link to={`/movie/${id}`}>
           <img src={coverImg} alt={title}
-            style={
-              {
+            style={{
                 width: "300px",
                 height: "400px"
-              }
-            } 
+              }} 
           />
         </Link>
         <div className={styles[`movie-info`]}>

@@ -35,9 +35,7 @@
 .more-movie {
     font-size: 20px;
     font-weight: bolder ;
-    text-decoration: none;
     padding-right: 120px;
-    color: red;
 }
 .more-movie:visited {
     color: inherit;

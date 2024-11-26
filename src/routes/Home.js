@@ -27,7 +27,7 @@ function Home() {
           </div>
         ) : (
           <div className={styles[`home-body`]}>
-            <Header/>
+            <Header page={"Home"}/>
               <div className={styles.contents}>
                 <div className={styles[`realtime-container`]}>
                   <div className={styles[`realtime-header`]}>
@@ -49,7 +49,7 @@ function Home() {
               </div>
             </div>
           </div>
-        )}
+        )}  
       </>
     );
   }
