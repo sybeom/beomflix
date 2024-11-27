@@ -1,0 +1,11 @@
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-basis: 16.666%; /* 한 행에 4개 */
+    box-sizing: border-box;
+}
+
+.image {
+    
+}

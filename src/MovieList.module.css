@@ -18,7 +18,7 @@
     border-radius: 8px;
 }
 
-.order {
+.sort {
     width: inherit;
     height: inherit;
     background-color: white;
@@ -33,14 +33,5 @@
     background-color: red;
     border: 1px solid white;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 15px;
     flex-wrap: wrap;
-}
-.card {
-    background-color: blue;
-    width: 285px;
-    height: 360px;
-    border: 1px solid white;
 }

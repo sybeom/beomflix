@@ -40,3 +40,6 @@
 - MovieList 페이지 Header 추가
 - MovieList 페이지 영화 목록 DB 가져오기 및 목록 style 일부 구현
 
+***24.11.27***
+- 영화 목록 페이지의 영화 카드 컴포넌트 'MovieListCard' 생성 및 배치
+

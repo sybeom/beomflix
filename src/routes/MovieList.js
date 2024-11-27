@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "../MovieList.module.css";
 import Header from "../components/Header";
-import Movie from "../components/Movie";
+import MovieListCard from "../components/MovieListCard";
 
 function MovieList() {
     const [loading, setLoading] = useState(true);
@@ -9,7 +9,7 @@ function MovieList() {
     const getMovies = async () => {
         const json = await (
           await fetch(
-            `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year`
+            `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.0`
           )
         ).json();
         setMovies(json.data.movies);
@@ -18,6 +18,7 @@ function MovieList() {
     useEffect(() => {
         getMovies();
     }, []);
+    console.log(movies);
     return (
     <>
     {loading ? (
@@ -28,7 +29,7 @@ function MovieList() {
                 <Header page={"MovieList"}/>
                 <div className={styles.container}>
                     <div className={styles[`list-header`]}>
-                        <select className={styles.order}>
+                        <select className={styles.sort}>
                             <option className={styles[`option-priority`]}>
                                 평점 높은 순
                             </option>
@@ -43,8 +44,7 @@ function MovieList() {
                     <div className={styles[`movie-list-container`]}>
                         {
                             movies.map(movie => (
-                            
-                                <Movie className={styles.card}
+                                <MovieListCard
                                     key={movie.id}
                                     id={movie.id}
                                     coverImg={movie.medium_cover_image}
