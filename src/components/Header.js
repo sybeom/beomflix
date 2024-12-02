@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import styles from "../Header.module.css";
 
 function Header({page}) {
-    console.log(page);
     if(page == "MovieList") {
         return (
             <div className={styles[`header-container`]}>

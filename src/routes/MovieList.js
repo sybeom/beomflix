@@ -17,8 +17,9 @@ function MovieList() {
       };
     useEffect(() => {
         getMovies();
+        console.log("movies : " + movies);
     }, []);
-    console.log(movies);
+    let i = 0;
     return (
     <>
     {loading ? (
@@ -51,6 +52,7 @@ function MovieList() {
                                     title={movie.title}
                                     summary={movie.summary}
                                     genres={movie.genres}
+                                    test={i++}
                                 />
                             ))
                         }
