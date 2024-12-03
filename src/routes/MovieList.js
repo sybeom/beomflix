@@ -5,21 +5,28 @@ import MovieListCard from "../components/MovieListCard";
 
 function MovieList() {
     const [loading, setLoading] = useState(true);
-    const [movies, setMovies] = useState([]);
-    const getMovies = async () => {
-        const json = await (
-          await fetch(
-            `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.0`
-          )
-        ).json();
-        setMovies(json.data.movies);
-        setLoading(false);
-      };
+    const [movies, setMovies] = useState([]);   
+    const getMovies = () => {
+        const options = {
+            method: 'GET',
+            headers: {
+              accept: 'application/json',
+              Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmYmVlZjY1MTM4MTBmMTRmYmJjMzljNTQ1MzIzNzkxZSIsIm5iZiI6MTcyMTQ2MzI3OS44MzM5OTk5LCJzdWIiOiI2NjliNzFlZjU1N2QxMjJlODUxODFmYjUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.xCyd-F_0snlSKX3t4LgkZ4yL55lY-r_bVUKNP5SoxhI'
+            }
+          };
+          
+        fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&vote_average.gte=2.5', options)
+            .then(res => res.json())
+            .then(res => {
+                setMovies(res.results);
+                setLoading(false);
+                console.log(res.results);
+        }).catch(err => console.error(err));
+    };
+
     useEffect(() => {
         getMovies();
-        console.log("movies : " + movies);
     }, []);
-    let i = 0;
     return (
     <>
     {loading ? (
@@ -48,11 +55,10 @@ function MovieList() {
                                 <MovieListCard
                                     key={movie.id}
                                     id={movie.id}
-                                    coverImg={movie.medium_cover_image}
+                                    imgPath={movie.poster_path}
                                     title={movie.title}
-                                    summary={movie.summary}
-                                    genres={movie.genres}
-                                    test={i++}
+                                    summary={movie.overview}
+                                    genres={movie.genre_ids}
                                 />
                             ))
                         }
