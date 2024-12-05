@@ -7,7 +7,8 @@ import styles from "../Home.module.css";
 function Home() {
     const [loading, setLoading] = useState(true);
     const [movies, setMovies] = useState([]);
-    const getMovies2 = () => {
+    const url = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&vote_average.gte=7';
+    const getMovies = () => {
       const options = {
           method: 'GET',
           headers: {
@@ -16,7 +17,7 @@ function Home() {
           }
         };
         
-      fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&vote_average.gte=2.5', options)
+      fetch(url, options)
           .then(res => res.json())
           .then(res => {
               setMovies(res.results);
@@ -26,7 +27,7 @@ function Home() {
   };
 
   useEffect(() => {
-    getMovies2();
+    getMovies();
   }, []);
   return (
     <>
@@ -40,7 +41,7 @@ function Home() {
             <div className={styles.contents}>
               <div className={styles[`realtime-container`]}>
                 <div className={styles[`realtime-header`]}>
-                  <div className={styles[`realtime-title`]}>실시간 인기 영화</div>
+                  <div className={styles[`realtime-title`]}>실시간 추천 영화</div>
                   <Link to={`/movielist/`} className={styles[`more-movie`]}> 더 보기 </Link>
                 </div>
                 <div className={styles[`slider-track`]}>

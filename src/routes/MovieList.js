@@ -3,9 +3,23 @@ import styles from "../MovieList.module.css";
 import Header from "../components/Header";
 import MovieListCard from "../components/MovieListCard";
 
+// 페이지 끝 감지, 결과 로드
+function detectEnd() {
+    const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+    if (scrollTop + clientHeight >= scrollHeight - 20) {
+        console.log("scrollTop : " + scrollTop);
+    }
+}
+
+// 결과 로드
+async function loadMoreResults() {
+
+}
+
 function MovieList() {
     const [loading, setLoading] = useState(true);
-    const [movies, setMovies] = useState([]);   
+    const [movies, setMovies] = useState([]);
+    const url = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&vote_average.gte=2.5';
     const getMovies = () => {
         const options = {
             method: 'GET',
@@ -15,7 +29,7 @@ function MovieList() {
             }
           };
           
-        fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&vote_average.gte=2.5', options)
+        fetch(url, options)
             .then(res => res.json())
             .then(res => {
                 setMovies(res.results);
@@ -27,6 +41,9 @@ function MovieList() {
     useEffect(() => {
         getMovies();
     }, []);
+    
+    // 스크롤 이벤트
+    window.addEventListener('scroll', detectEnd);
     return (
     <>
     {loading ? (
