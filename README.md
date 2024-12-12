@@ -56,3 +56,9 @@
 
 ***24.12.10***
 - MovieList 페이지 스크롤 최하단 도달시 다음 영화 목록 불러오기 구현 완료
+
+***24.12.12***
+- index.js <React.StrictMode> 제거 => 매번 api가 두번 호출되던 것 해결.
+- MovieList.js의 <MovieListCard>에서 key 속성에 주던 값을 movie.id에서 map의 index값으로 변경
+=> 키 중복 오류 해결
+- api 호출시 사용하는 option 함수 보일러코드 제거 => getOption()로 통일

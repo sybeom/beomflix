@@ -30,10 +30,10 @@
 }
 
 .movie-list-container {
-    background-color: red;
-    border: 1px solid white;
+    background-color: black;
+    /* border: 1px solid white; */
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 3px;
+    justify-content: center;
+    gap: 15px;
 }

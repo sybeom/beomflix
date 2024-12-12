@@ -5,9 +5,11 @@ import styles from "../Movie.module.css"
 function Movie({ id, imgPath, title, summary, genres }) {
   const imageUrl = `https://image.tmdb.org/t/p/w342${imgPath}`
   const movie_title = title.length > 15 ? title.slice(0, 15) + "..." : title;
+  // console.log("홈화면 영화 아뒤", id);
   return (
       <div className={styles.movie}>
-        <Link to={`/movie/${id}`}>
+        {/* 디테일 화면으로 */}
+        <Link to={`/movie/${id}`}> 
           <img src={imageUrl} alt={title}
             style={{
                 width: "300px",
