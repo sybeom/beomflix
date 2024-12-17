@@ -62,3 +62,6 @@
 - MovieList.js의 <MovieListCard>에서 key 속성에 주던 값을 movie.id에서 map의 index값으로 변경
 => 키 중복 오류 해결
 - api 호출시 사용하는 option 함수 보일러코드 제거 => getOption()로 통일
+
+***24. 12. 17***
+- 영화 api 중복호출문제 해결
