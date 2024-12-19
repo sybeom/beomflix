@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import styles from "../Detail.module.css"
 
 function Detail() {
-    const movie_id = useParams();
+    const movie_param = useParams();
     let imgPath = "";
     const [imgUrl, setImgUrl] = useState();
     let width = 0;
@@ -16,13 +16,13 @@ function Detail() {
         }
       };
       
-      fetch(`https://api.themoviedb.org/3/movie/${movie_id.id}/images`, options)
+      fetch(`https://api.themoviedb.org/3/movie/${movie_param.id}/images`, options)
         .then(res => res.json())
         .then(res => {
           console.log(res)
-          imgPath = res.backdrops[0].file_path;
-          width = res.backdrops[0].width;
-          setImgUrl(`https://image.tmdb.org/t/p/w${width}${imgPath}`);
+          imgPath = res.backdrops[3].file_path;
+          width = res.backdrops[3].width;
+          setImgUrl(`https://image.tmdb.org/t/p/original${imgPath}`);
           console.log(imgUrl);
         })
         .catch(err => console.error(err));
@@ -31,8 +31,15 @@ function Detail() {
       getMovie();
     }, []);
     return (
-      <div className={styles[`detail-container`]}>
-        <img src={imgUrl}></img>
+      <div className={styles[`detail-body-container`]}
+        style={
+          {background : `url(${imgUrl})
+              no-repeat 
+              center 
+              / cover
+              fixed`}
+        }>
+        <div>{imgUrl}</div>
       </div>
     );
   }

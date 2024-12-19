@@ -4,11 +4,15 @@
     justify-content: center;
     align-items: center;
 }
-
-.container {
+.movielist-body-container {
     height: 100vh;
+    overflow-y: scroll;
+}
+
+.contents-container {
     padding: 48px;
     background-color: black;
+    /* overflow-y: scroll; */
 }
 
 .list-header {
@@ -16,6 +20,7 @@
     justify-content: end;
     height: 48px;
     border-radius: 8px;
+    flex-shrink: 0;
 }
 
 .sort {
