@@ -6,7 +6,6 @@ function Detail() {
     const movie_param = useParams();
     let imgPath = "";
     const [imgUrl, setImgUrl] = useState();
-    let width = 0;
     const getMovie = () => {
       const options = {
         method: 'GET',
@@ -21,9 +20,7 @@ function Detail() {
         .then(res => {
           console.log(res)
           imgPath = res.backdrops[3].file_path;
-          width = res.backdrops[3].width;
           setImgUrl(`https://image.tmdb.org/t/p/original${imgPath}`);
-          console.log(imgUrl);
         })
         .catch(err => console.error(err));
     };
@@ -31,15 +28,13 @@ function Detail() {
       getMovie();
     }, []);
     return (
-      <div className={styles[`detail-body-container`]}
-        style={
-          {background : `url(${imgUrl})
-              no-repeat 
-              center 
-              / cover
-              fixed`}
-        }>
-        <div>{imgUrl}</div>
+      <div className={styles[`detail-body-container`]}>
+        <div className={styles[`contents`]}>
+          <img src={imgUrl}></img>
+        </div>
+        <div>
+          ABCDEFG
+        </div>
       </div>
     );
   }
