@@ -6,6 +6,13 @@ function Detail() {
     const movie_param = useParams();
     let imgPath = "";
     const [imgUrl, setImgUrl] = useState();
+    const [title, setTitle] = useState("");
+    const [date, setDate] = useState("");
+    const [country, setCountry] = useState("");
+    const [runtime, setRuntime] = useState("");
+    const [rate, setRate] = useState("");
+    const [genres, setGenres] = useState([""]);
+    const [overview, setOverview] = useState([""]);
     const getMovie = () => {
       const options = {
         method: 'GET',
@@ -15,12 +22,19 @@ function Detail() {
         }
       };
       
-      fetch(`https://api.themoviedb.org/3/movie/${movie_param.id}/images`, options)
+      fetch(`https://api.themoviedb.org/3/movie/${movie_param.id}?language=en-US`, options)
         .then(res => res.json())
         .then(res => {
           console.log(res)
-          imgPath = res.backdrops[3].file_path;
+          imgPath = res.backdrop_path;
           setImgUrl(`https://image.tmdb.org/t/p/original${imgPath}`);
+          setTitle(res.title);
+          setDate(res.release_date);
+          setCountry(res.origin_country);
+          setRuntime(res.runtime);
+          setRate(res.vote_average);
+          setGenres(res.genres);
+          setOverview(res.overview);
         })
         .catch(err => console.error(err));
     };
@@ -29,11 +43,27 @@ function Detail() {
     }, []);
     return (
       <div className={styles[`detail-body-container`]}>
-        <div className={styles[`contents`]}>
-          <img src={imgUrl}></img>
+        <div className={styles[`contents`]} style={{
+          backgroundImage : `url(${imgUrl})`
+        }}>
+          {/* <img src={imgUrl}></img> */}
         </div>
-        <div>
-          ABCDEFG
+        <div className={styles.info}>
+          <div className={styles.title}>{title}</div>
+          <span className={styles.date}>{date.split('-')[0]}</span>
+          <span className={styles.runtime}>{runtime + "분"}</span>
+          <span className={styles.country}>{country}</span>
+          <span className={styles.rate}>{"⭐ " + rate}</span>
+          <div className={styles[`genres-container`]}>
+            {
+              genres.map(genre => (<div className={styles.genre}>{genre.name}</div>))
+            }
+          </div>
+          <div className={styles.overview}>
+            <p>
+              {overview}
+            </p>
+          </div>
         </div>
       </div>
     );

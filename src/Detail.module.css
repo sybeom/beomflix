@@ -6,12 +6,61 @@
 }
 
 .contents {
-    overflow: hidden;
+    margin: 40px 40px;
+    /* overflow: hidden; */
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+
 }
 
 img {
-    width: 100%;
-    max-height: 100%;
+    /* width: 100%; */
+    /* max-height: 100%; */
+}
+
+.info {
+    padding-left : 80px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 16px 0;
+}
+
+.date { 
+    display: inline-block;
+    margin-top: 8px;
+    margin-right: 12px;
+}
+
+.runtime {
+    margin-right: 12px;
+}
+
+.country {
+    margin-right: 12px;
+}
+
+.rate {
+    margin-right: 12px;
+}
+
+.genres-container {
+    margin: 8px 12px 0 0 ;
+}
+
+.genre {
+    display: inline-block;
+    background-color: rgb(80, 80, 80);
+    border-radius: 4px;
+    margin: 4px 12px 0 0;
+    padding: 0 4px;
+}
+
+.overview {
+    margin-top: 24px;
 }
 
 
