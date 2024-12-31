@@ -56,7 +56,7 @@ function Detail() {
           <span className={styles.rate}>{"⭐ " + rate}</span>
           <div className={styles[`genres-container`]}>
             {
-              genres.map(genre => (<div className={styles.genre}>{genre.name}</div>))
+              genres.map((genre, idx) => (<div className={styles.genre} key={idx}>{genre.name}</div>))
             }
           </div>
           <div className={styles.overview}>

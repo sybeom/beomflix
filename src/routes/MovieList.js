@@ -15,8 +15,9 @@ function MovieList() {
     const [loading, setLoading] = useState(true);
     const [movies, setMovies] = useState([]);
     const [page, setPage] = useState(1);
+    const [sortOption, setSortOption] = useState("popularity.desc");
     const loadingPage = useRef(false);
-    const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&vote_average.gte=2.5`;
+    const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=${sortOption}&vote_average.gte=6.0&vote_count.gte=50`;
     const getMovies = () => {
         fetch(url, getOptions())
             .then(res => res.json())
@@ -30,7 +31,7 @@ function MovieList() {
 
     useEffect(() => {
         getMovies();
-    }, []);
+    }, [sortOption]);
 
     // 스크롤 최하단시 추가 영화 목록 불러오기
     const handleScroll = (event) => {
@@ -68,22 +69,29 @@ function MovieList() {
                     <Header page={"MovieList"}/>
                     <div className={styles[`contents-container`]}>
                         <div className={styles[`list-header`]}>
-                            <select className={styles.sort}>
-                                <option className={styles[`option-priority`]}>
+                            <select 
+                                className={styles.sort}
+                                onChange={(e) => {
+                                    setSortOption(e.target.value)
+                                    setPage(1);
+                                    console.log(e.target.value);
+                                }}>
+                                <option value="vote_average.desc" className={styles[`option-priority`]}>
                                     평점 높은 순
                                 </option>
-                                <option className={styles[`option-priority`]}>
+                                <option value="title.desc" className={styles[`option-priority`]}>
                                     이름 순
                                 </option>
-                                <option className={styles[`option-priority`]}>
+                                <option value="primary_release_date" className={styles[`option-priority`]}>
                                     최신 순
                                 </option>
                             </select>
                         </div>
                         <div className={styles[`movie-list-container`]}>
                             {
-                                movies.map((movie, idx) => (
-                                    <MovieListCard
+                                movies.map((movie, idx) => {
+                                    console.log(idx + ": " + movie.vote_count)
+                                    return <MovieListCard
                                         key={idx}
                                         id={movie.id}
                                         imgPath={movie.poster_path}
@@ -91,7 +99,7 @@ function MovieList() {
                                         summary={movie.overview}
                                         genres={movie.genre_ids}
                                     />
-                                ))
+                                })
                             }
                         </div>
                     </div>
